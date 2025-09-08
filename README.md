@@ -1,6 +1,58 @@
-# YouTube Meal Companion
+# CS1060 - Homework 1: YouTube Meal Companion
 
-A beautiful React app that recommends YouTube videos based on your meal duration and viewing preferences.
+## Contributors
+- **Mohamed Mohamed**, GitHub: mohamedhaggag12, Harvard email: mmohamed@college.harvard.edu
+
+## Project Links
+- **Bolt Project**: https://bolt.new/~/sb1-epije8dz
+- **GitHub Repository**: https://github.com/mohamedhaggag12/cs1060-mohamedhaggag12-hw1
+- **Netlify Deployment**: https://mealcompanion.netlify.app
+
+## Project Summary
+
+### What I Worked On
+I created a YouTube Meal Companion app - a React-based web application that recommends YouTube videos based on your meal duration and viewing preferences. The app allows users to:
+- Select preset meal times (Quick Snack, Light Meal, Full Meal, Feast) or set custom duration
+- Choose from multiple content categories (Comedy, Gaming, Music, Educational, Tech, Movies, TV Shows, Food)
+- Get video recommendations that match their available time
+- Click videos to open them directly in YouTube
+
+### Technologies Used
+- Bolt for development
+- YouTube Data API v3 for video data
+- Netlify for deployment
+
+### Issues Encountered
+
+**YouTube API Quota Limitation**: The main issue I encountered was hitting the YouTube Data API v3 daily quota limit (10,000 units per day). If multiple users are accessing the site, it can quickly exhaust the free tier quota, resulting in 403 "quota exceeded" errors.
+
+**Workaround**: I documented this known limitation in the app and explained that it's a constraint of the free YouTube API tier, not a bug in the code. The quota resets daily at midnight PT (3am EST). For demonstration purposes, I'm happy to provide a video showing the application working if the quota isn't renewed when it's time to grade the assignment. 
+
+**Deployment Configuration**: Initially had some challenges configuring Netlify to properly deploy the React TypeScript project, but resolved this by setting up the correct build commands and publish directory.
+
+### Hours Spent
+Approximately **2 hours** total, primarily focused on:
+- Setting up GitHub repository and proper file organization
+- Configuring Netlify deployment for the Bolt-generated React app
+- Troubleshooting build settings and publish directory configuration
+- Testing deployment and documenting the YouTube API quota limitation
+- Ensuring smooth integration between Bolt.new, GitHub, and Netlify platforms
+
+*Note: The core application development was done using Bolt.new's AI-assisted development platform.*
+
+## Known Issues
+- **YouTube API Quota**: The application may show a 403 quota error if the daily YouTube API limit (10,000 units) has been exceeded. The quota resets daily at midnight PT. This is a limitation of the free YouTube API tier, not a bug in the code.
+- **Workaround**: If you encounter this error, please try again after the quota reset or the functionality can be demonstrated in the Bolt environment.
+
+## How It Works
+
+The app uses YouTube's duration categories:
+- **Short** (up to 3 minutes): Perfect for quick snacks
+- **Medium** (10+ minutes): Great for light meals  
+- **Long** (25+ minutes): Ideal for full meals
+-**fulltime** (40+  minutes): For having a feast
+
+Videos are filtered to match your specific meal duration, ensuring you get content that fits perfectly with your available time.
 
 ## Features
 
@@ -9,54 +61,3 @@ A beautiful React app that recommends YouTube videos based on your meal duration
 - **Smart Filtering**: Videos are filtered to match your available time
 - **Beautiful UI**: Modern design with smooth animations and responsive layout
 - **Direct YouTube Links**: Click any video to open it in a new tab
-
-## Setup
-
-1. **Get a YouTube Data API v3 key:**
-   - Visit [Google Developers Console](https://developers.google.com/youtube/v3/getting-started)
-   - Create a new project or select existing one
-   - **Enable YouTube Data API v3** by visiting the [API Library](https://console.developers.google.com/apis/library/youtube.googleapis.com) and clicking "Enable"
-   - Create credentials (API key)
-   - Restrict the key to YouTube Data API v3
-   
-   **Important**: If you get a 403 error saying "YouTube Data API v3 has not been used", you need to enable the API first. Visit the link in the error message or go to the API Library in your Google Cloud Console.
-
-2. **Configure the API key:**
-   ```bash
-   cp .env.example .env
-   ```
-   
-   Then edit `.env` and add your API key:
-   ```
-   VITE_YOUTUBE_API_KEY=your_actual_api_key_here
-   ```
-
-3. **Install and run:**
-   ```bash
-   npm install
-   npm run dev
-   ```
-
-## Usage
-
-1. **Set your meal duration** - Choose a preset (Quick Snack, Light Meal, Full Meal, Feast) or enter custom minutes
-2. **Select content categories** - Pick what type of videos you want to watch
-3. **Browse recommendations** - The app will find videos that fit your timeframe
-4. **Click to watch** - Videos open directly in YouTube
-
-## How It Works
-
-The app uses YouTube's duration categories:
-- **Short** (up to 4 minutes): Perfect for quick snacks
-- **Medium** (4-20 minutes): Great for regular meals  
-- **Long** (20+ minutes): Ideal for extended dining
-
-Videos are further filtered to match your specific meal duration, ensuring you get content that fits perfectly with your available time.
-
-## Technologies Used
-
-- React 18 with TypeScript
-- Tailwind CSS for styling
-- Lucide React for icons
-- YouTube Data API v3
-- Vite for development and building
